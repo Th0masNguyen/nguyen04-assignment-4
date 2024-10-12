@@ -1,0 +1,34 @@
+name: Python application
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'  # Set to your desired Python version
+
+      - name: Install dependencies
+        run: |
+          make install
+
+      - name: Run the application
+        run: |
+          make run &
+          sleep 30  # Sleep for 5 seconds to allow the server to start up
+      - name: Check if the server is running
+        run: |
+          echo "Checking if the server is running..."
+          curl -I http://localhost:3000 || { echo "Server not running"; exit 1; }
