@@ -27,7 +27,7 @@ jobs:
       - name: Run the application
         run: |
           make run &
-          sleep 10  # Sleep for 5 seconds to allow the server to start up
+          sleep 15  # Sleep for 5 seconds to allow the server to start up
       - name: Check if the server is running
         run: |
           echo "Checking if the server is running..."
