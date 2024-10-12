@@ -42,7 +42,7 @@ function displayChart(data) {
         similarityChart.destroy();  // Destroy the old chart
     }
 
-    const labels = data.indices.map(index => `Document ${index + 1}`); // Ensure labels start from 1
+    const labels = data.indices.map(index => `Document ${index}`);
     const similarities = data.similarities;
 
     // Create a new chart
